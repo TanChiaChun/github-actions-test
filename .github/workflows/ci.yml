@@ -1,0 +1,13 @@
+name: CI
+on: push
+jobs:
+  markdown:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Install markdownlint
+        run: |
+          npm install --global markdownlint-cli
+          markdownlint --version
